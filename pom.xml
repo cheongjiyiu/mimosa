@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>securecoding</groupId>
-	<artifactId>mini-mimosa</artifactId>
+	<artifactId>mimosa-core</artifactId>
 	<version>3.3.1</version>
 	<name>Mimosa</name>
 	<description>touch me not</description>
