@@ -1,0 +1,347 @@
+body {
+	font-family: Raleway, Arial, sans-serif;
+	font-weight: 600;
+	background-color: #333;
+}
+
+.home {
+	background-color: #e8e8e8;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .nav>li>a:focus,
+	.nav>li>a:hover {
+	background-color: #464646;
+	color: #F2F1EF;
+}
+
+.simulate-a {
+	color: #fff;
+	cursor: pointer;
+	box-sizing: border-box;
+	text-decoration: none;
+	background-color: transparent;
+}
+
+.text-muted {
+	color: #8DB255;
+}
+
+.btn-logout {
+	text-align: center;
+	color: #434a54;
+}
+
+.navbar a {
+	color: #F2F1EF;
+}
+
+.navbar-brand span {
+	color: #87D37C;
+	display: inline-block;
+	padding-top: 5px;
+}
+
+.navbar-brand span:hover {
+	color: #87D37C;
+}
+
+.dropdown-menu {
+	background-color: #464646;
+}
+
+.sidebar ul li a.active {
+	background-color: #000;
+}
+
+.sidebar ul li {
+	border-bottom: 1px solid #333;
+}
+
+.panel .list-group-item {
+	border: 1px solid #e6e9ed;
+}
+
+.btn-success {
+	background-color: #4FA065;
+	border-color: #4FA065;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:visited {
+	background-color: #72BE7C;
+	border-color: #72BE7C;
+}
+
+.simulate-a .btn-logout {
+	color: #434a54;
+	text-align: center;
+	border: none;
+}
+
+#error-textarea, .monospace {
+	font-family: 'Source Code Pro', monospace;
+}
+
+.loading {
+	background: rgba(0, 0, 0, 0.25);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 9998;
+}
+
+.navbar-static-top {
+	margin-bottom: 0;
+}
+
+.simulate-a .btn-link {
+	border: 0;
+	color: inherit;
+	text-decoration: none;
+	padding: 0;
+}
+
+.simulate-a:active, .simulate-a:hover {
+	outline: 0;
+}
+
+.dropdown-menu>li .simulate-a {
+	display: block;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857143;
+	white-space: nowrap;
+	padding: 3px 20px;
+}
+
+.navbar-top-links li a {
+	min-height: 50px;
+	padding: 15px;
+}
+
+.navbar-top-links .dropdown-menu li .simulate-a {
+	min-height: 0;
+	padding: 3px 20px;
+}
+
+.navbar-top-links .dropdown-menu li .simulate-a div {
+	white-space: normal;
+}
+
+.form-group-sm {
+	margin-bottom: 6px;
+}
+
+textarea.form-control {
+	resize: none;
+}
+
+#editor {
+	padding-bottom: 500px;
+	margin-bottom: 12px;
+}
+
+.navbar-brand {
+	padding-top: 10px;
+}
+
+.navbar-brand img {
+	float: left;
+	padding-right: 5px;
+}
+
+.input-group-addon {
+	min-width: 40px;
+	text-align: center;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+a {
+	color: #000;
+}
+
+a>.status-diamond, a>.difficulty-easy {
+	color: #5cb85c;
+	float: right;
+}
+
+a>.status-diamond {
+	margin-top: .2em;
+}
+
+a>.difficulty-intermediate {
+	color: #F80;
+}
+
+a>.difficulty-advanced {
+	color: #C00;
+}
+
+a>.chal-difficulty {
+	float: right;
+	font-size: xx-small;
+	margin-top: .5em;
+	margin-right: .4em;
+}
+
+.navbar-top-links .dropdown-menu li a:hover, .sim-a-left:hover {
+	background-color: #656565;
+}
+
+.btn-success.btn-outline, .btn-danger.btn-outline, .error-title {
+	color: #fff;
+}
+
+.panel-green a {
+	color: #5cb85c;
+}
+
+.panel-green a:hover {
+	color: #3d8b3d;
+}
+
+.form-control[readonly] {
+	background-color: #fff;
+}
+
+.navbar-top-links .dropdown-alerts, .navbar-top-links .dropdown-messages,
+	.navbar-top-links .dropdown-tasks {
+	width: 400px;
+}
+
+.label-special {
+	background-color: #9c27b0;
+}
+
+.text-special {
+	color: #9c27b0;
+}
+
+.alert-special {
+	color: #fff;
+	background-color: #c352d6;
+	border-color: #c352d6;
+}
+
+@media ( min-width : 1200px) {
+	.no-pad-left {
+		padding-left: 0;
+	}
+	.no-pad-right {
+		padding-right: 0;
+	}
+}
+
+@media ( max-width : 1200px) {
+	.no-pad-left, .no-pad-right {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.challenge-pill {
+	background-color: #aab2bd;
+	display: inline-block;
+	position: relative;
+	bottom: -4px;
+	right: 0;
+	padding: 4px;
+	margin: 0 .4em 0 -.4em;
+	border-radius: 100%;
+}
+
+.side-pill {
+	margin-top: .4em;
+	display: inline-block;
+	position: relative;
+	padding: 4px;
+	border-radius: 100%;
+}
+
+.pill-default {
+	background-color: #aab2bd;
+}
+
+.pill-info {
+	background-color: #37bc9b
+}
+
+.pill-success {
+	background-color: #8cc152
+}
+
+.pill-danger {
+	background-color: #da4453
+}
+
+.pill-warning {
+	background-color: #f6bb42
+}
+
+.pill-special {
+	background-color: #9c27b0
+}
+
+.panel-heading>a {
+	color: #434a54;
+}
+
+.link a:hover, .link a:focus {
+	color: #3d8b3d;
+}
+
+.form-inline .checkbox, .form-inline .radio {
+	display: inline-block;
+	margin-top: -2px;
+	margin-bottom: 0;
+	vertical-align: top;
+}
+
+.panel-closer {
+	margin-bottom: 10px;
+}
+
+.sidebar .nav-fourth-level li a {
+	padding-left: 67px;
+}
+
+.marginalize-sm {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.marginalize-md {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.marginalize-lg {
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+.alert-info {
+	background-color: #37bc9b;
+	border: #37bc9b;
+}
+
+.alert-info, .text-info {
+	color: #27967a;
+}
+
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.width-100 {
+	width: 100%;
+}
+
+.nudge-up {
+	top: 0 !important;
+}

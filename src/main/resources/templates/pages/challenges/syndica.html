@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Syndica</div>
+		<div th:fragment="description">
+			<p>Web filtering is a technology stops users from viewing certain
+				URLs or websites by preventing their browsers from loading pages
+				from these sites.</p>
+			<p>
+				There's some automated filters that are available, such as Syndica.
+				Syndica can detect certain attack patterns and stops the user from
+				visiting the susceptible content. Syndica absolutely hates the word
+				<code>alert</code>
+				.
+			</p>
+			<br />
+			<p>Cause an alert with the message "xss_by_sam_tan".</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<!--/* Nav Bar Form */-->
+			<form id="challenge-form" th:action="@{/challenges/syndica}"
+				method="post" enctype="application/x-www-form-urlencoded"
+				data-control="syndica">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+					<input id="navbar-input" type="text" class="form-control input-sm"
+						name="nav" value="https://dism.edu.sg"><span
+						class="input-group-btn">
+						<button class="btn btn-default btn-sm" type="submit">search</button>
+					</span>
+				</div>
+			</form>
+
+			<!--/* Webpage */-->
+			<div th:fragment="main-site" class="site-content marginalize-sm">
+
+				<!--/* Content */-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fab fa-wordpress"></i> DISM Website
+					</div>
+					<div class="panel-body">
+						<h4>SP DISM</h4>
+						<p class="text-muted">CNA+ On The Red Dot: Young and Boss</p>
+						<p class="link">CNA spoke with SP Diploma in Business
+							Administration student Harsh Dalal and Diploma in Information
+							Security Management (DISM) graduate Dalton Ng on their
+							entrepreneurial journey. Both Harsh and Dalton are among the
+							youngest app developers in the industry.</p>
+						<p class="text-muted">DISM Course Counselling @ SPCC</p>
+						<p class="link">Do you have a burning question about Diploma
+							in Infocomm Security Management (DISM) S54, poly education,
+							further education or career choices open to you after O levels?
+							Visit us @ Singapore Polytechnic Convention Centre (SPCC) and
+							talk to our course counsellors who will be most delighted to
+							advise you.</p>
+						<p class="text-muted">Instagram Alerts</p>
+						<p class="link">Straits Times reporter Cyrus Reeves reports of
+							DISM students following random strangers on Instagram. In his
+							interview, student Amberlyn Low was asked why she chose to follow
+							a random adjunct lecturer, despite having never been to his
+							class. The student declined to comment.</p>
+						<hr>
+						<form id="dism-search-form">
+							<div class="input-group">
+								<span class="input-group-addon">Search</span> <input
+									id="dism-search-input" type="text"
+									class="form-control input-sm" name="search"
+									placeholder="Enter search query"><span
+									class="input-group-btn">
+									<button class="btn btn-default btn-sm" type="submit">search</button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div th:fragment="search">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-wordpress"></i> DISM Website
+				</div>
+				<div class="panel-body">
+					<h4>Search Results</h4>
+					<p>No results found for "{mm-replace}"!</p>
+					<p class="link">
+						Click here to go back to the <a href="/"
+							class="nav-redirect text-muted">home page</a>.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="syndica">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-wordpress"></i> DISM Website
+				</div>
+				<div class="panel-body">
+					<h4>Syndica Protection</h4>
+					<p>Syndica has detected a bad request parameter "{mm-replace}"!
+						The request was dropped.</p>
+					<p class="link">
+						Click here to go back to the <a href="/"
+							class="nav-redirect text-muted">home page</a>.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="not-found">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-wordpress"></i> DISM Website
+				</div>
+				<div class="panel-body">
+					<h4>Not Found</h4>
+					<p>Sorry! The page you are looking for is not found!</p>
+					<p class="link">
+						Click here to go back to the <a href="/"
+							class="nav-redirect text-muted">home page</a>.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="bad-request">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-lock"></i> EasterEgg Weblock
+				</div>
+				<div class="panel-body">
+					<h4>Error</h4>
+					<p class="link">
+						You're not allowed to leave the <a href="/"
+							class="nav-redirect text-muted">domain</a> for this exercise!
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="points">25</div>
+		<div th:fragment="category">XSS</div>
+		<div th:fragment="difficulty">Easy</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script th:src="@{/js/pages/challenges/syndica.js}"
+		type="text/javascript"></script>
+</body>
+</html>

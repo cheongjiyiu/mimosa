@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Xss Basics</div>
+		<div th:fragment="description">
+			<p>Cross-site scripting (XSS) is a type of computer security
+				vulnerability typically found in web applications. XSS enables
+				attackers to inject client-side scripts into web pages viewed by
+				other users.</p>
+			<p>These scripts are often non-malicious, but pose as a nuisance
+				to potential web users.</p>
+			<br />
+			<p>Cause a "helloworld" alert with a single search query.</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<!--/* Table */-->
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered people-i-like">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>Favourite Food</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Wei Liang</td>
+							<td>22</td>
+							<td>Male</td>
+							<td>Chocolate/Japanese</td>
+							<td>Plays the ukulele. Enjoys programming, teaching. Quirky.
+								Worked on the original Mimosa.</td>
+						</tr>
+						<tr>
+							<td>Chin Heng</td>
+							<td>22</td>
+							<td>Male</td>
+							<td>Cake</td>
+							<td>Plays a lot of Path of Exile. Kind hearted. Generally
+								relatable. Single, forever. Worked on the original Mimosa.</td>
+						</tr>
+						<tr>
+							<td>Si Xing</td>
+							<td>22</td>
+							<td>Male</td>
+							<td>Ice Cream</td>
+							<td>Terrified of snipers in trees. Martial arts expert; Can
+								chop you in two. Worked on the original Mimosa.</td>
+						</tr>
+						<tr>
+							<td>Chong Peng</td>
+							<td>23</td>
+							<td>Male</td>
+							<td>Pizza</td>
+							<td>Incredibly funny. Kind hearted. Likes ethical hacking.
+								Might be asleep. Worked on the original Mimosa.</td>
+						</tr>
+						<tr>
+							<td>Jia Yan</td>
+							<td>22</td>
+							<td>Female</td>
+							<td>Anything Expensive</td>
+							<td>Nice person. Doesn't really check her phone. Working
+								while studying part-time. Likes anime/dramas.</td>
+						</tr>
+						<tr>
+							<td>Hui Mun</td>
+							<td>22</td>
+							<td>Female</td>
+							<td>Japanese</td>
+							<td>Fierce. Generally nice. Keeps Wei Liang in check.
+								Musically inclined.</td>
+						</tr>
+						<tr>
+							<td>Eugene</td>
+							<td>22</td>
+							<td>Male</td>
+							<td>Mixed Vegetable Rice</td>
+							<td>Describes bad chicken rice as "soft rubbish". Gyms a
+								lot. Plays Rainbow Six Siege.</td>
+						</tr>
+						<tr>
+							<td>Jerome</td>
+							<td>22</td>
+							<td>Male</td>
+							<td>Anything Expensive</td>
+							<td>Can eat a lot. Exercises regularly. Working in a
+								security field.</td>
+						</tr>
+						<tr>
+							<td>Shi Wei</td>
+							<td>21</td>
+							<td>Female</td>
+							<td>Unknown</td>
+							<td>Studying in NUS. Really nice person, likes programming
+								and video games. Best friends with Mei Zheng. Worked on the
+								Mimosa v2.</td>
+						</tr>
+						<tr>
+							<td>Mei Zheng</td>
+							<td>21</td>
+							<td>Female</td>
+							<td>Unknown</td>
+							<td>Vegan. Really nice person, likes video games. Best
+								friends with Shi Wei. Worked on the Mimosa v2.</td>
+						</tr>
+						<tr>
+							<td>Davis</td>
+							<td>19</td>
+							<td>Male</td>
+							<td>Unknown</td>
+							<td>Student of Singapore Polytechnic. Partakes in hackathon
+								events. Working on a node-based Mimosa, Hive.</td>
+						</tr>
+						<tr>
+							<td>Wei Wei</td>
+							<td>22</td>
+							<td>Female</td>
+							<td>Anything Free</td>
+							<td>Likes Mamamoo, children, and karaoke. Mean spirited, but
+								funny. Wei Liang's childhood friend.</td>
+						</tr>
+						<tr>
+							<td>Tian Le</td>
+							<td>22</td>
+							<td>Male</td>
+							<td>Japanese</td>
+							<td>Business Analytics student. Smart, hardworking. Wei
+								Liang's childhood friend.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!--/* Hidden Form */-->
+			<form id="challenge-form" th:action="@{/challenges/xss-basics}"
+				method="post" enctype="application/x-www-form-urlencoded"
+				data-control="xss_basics">
+				<div class="form-inline">
+					<input type="hidden" name="msg" class="form-control" />
+				</div>
+			</form>
+
+		</div>
+
+		<div th:fragment="points">15</div>
+		<div th:fragment="category">XSS</div>
+		<div th:fragment="difficulty">Beginner</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script th:src="@{/js/pages/challenges/xss_basics.js}"
+		type="text/javascript"></script>
+</body>
+</html>

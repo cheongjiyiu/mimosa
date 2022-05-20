@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Page Content */-->
+	<div id="page-wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Dashboard</h1>
+			</div>
+		</div>
+		<div class="row">
+			<!--/* Notice Board */-->
+			<div class="col-lg-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-rss fa-fw"></i> Notices
+					</div>
+					<!--/* Notices */-->
+					<div class="panel-body">
+						<ul class="timeline">
+							<li th:each="notice, iterStat : ${notices}"
+								th:if="${iterStat.index >= iterStat.size-10}"
+								th:class="${notice.title.length() % 2 == 0} ? '' : timeline-inverted">
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h4 class="timeline-title" th:text="${notice.title}">Title</h4>
+										<p>
+											<small class="text-muted"> <i class="fa fa-user"></i>
+												<span th:remove="tag"
+												th:text="${notice.user.firstName} + ' ' + ${notice.user.lastName}"></span>
+												<br /> <i class="fa fa-clock"></i> <span th:remove="tag"
+												th:text="${#dates.format(notice.date, 'EEEE, MMMM dd, YYYY HH:MM:ss z')}"></span>
+											</small>
+										</p>
+									</div>
+									<div class="timeline-body">
+										<p th:text="${notice.content}">Content</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div sec:authorize="hasAnyAuthority('lecturer', 'admin')"
+						class="panel-footer">
+						<!--/* Notice Form */-->
+						<form th:action="@{/notices}" method="POST"
+							enctype="application/x-www-form-urlencoded"
+							data-control="add_notice">
+							<div class="form-group form-group-sm">
+								<div class="input-group">
+									<input type="text" class="form-control input-sm"
+										placeholder="Give it a title..." name="title" /> <span
+										class="input-group-btn">
+										<button class="btn btn-success btn-sm">Send</button>
+									</span>
+								</div>
+							</div>
+							<textarea rows="5" name="content" class="form-control input-sm"
+								placeholder="Type your message here..."></textarea>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!--/* About */-->
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-book fa-fw"></i> About
+					</div>
+					<div class="panel-body">
+						<div class="col-lg-12" id="advisors">
+
+							<!--/* Academia Information */-->
+							<div class="panel panel-default panel-closer">
+								<div class="panel-heading">
+									<a data-toggle="collapse" href="#agreement-info"><i
+										class="fa fa-exclamation-triangle fa-fw"></i> Terms and Conditions</a>
+								</div>
+								<div id="agreement-info"
+									class="panel-body panel-collapse collapse">
+									<div class="row">
+										<div class="col-lg-12">
+											<p>Please note that it is an offence to conduct any form
+												of attack on the Mimosa system. The system is meant to have
+												vulnerabilities as part of practice, BUT that does not mean
+												you can hack or penetrate the system by exploiting the
+												exercise vulnerability.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--/* WeiLiang */-->
+							<div class="panel panel-default panel-closer">
+								<div class="panel-heading">
+									<a data-toggle="collapse" href="#weiliang-info"><i
+										class="fa fa-user fa-fw"></i> Wei Liang</a>
+								</div>
+								<div id="weiliang-info"
+									class="panel-body panel-collapse collapse">
+									<div class="row">
+										<div class="col-lg-12">
+											<p>Hi everyone! My name is WeiLiang! I'm current
+												developing this page. There might be errors. Yup yup.</p>
+											<p>We can all learn from one another. Lemme know if you
+												have any interesting thoughts!</p>
+										</div>
+									</div>
+									<br />
+									<div class="row">
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://github.com/WeiLiangLOL"><i
+												class="fab fa-github fa-fw"></i> GitHub</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://t.me/WeiLiangLOL" class="link"><i
+												class="fab fa-telegram-plane fa-fw"></i> Telegram</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://www.instagram.com/weilianglol" class="link"><i
+												class="fab fa-instagram fa-fw"></i> Instagram</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://www.facebook.com/WeiLiangLOL" class="link"><i
+												class="fab fa-facebook fa-fw"></i> Facebook</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://twitter.com/WeiLiangLOL" class="link"><i
+												class="fab fa-twitter fa-fw"></i> Twitter</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://wa.me/6585155931" class="link"><i
+												class="fab fa-whatsapp fa-fw"></i> WhatsApp</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="https://www.linkedin.com/in/kuahweiliang"
+												class="link"><i class="fab fa-linkedin fa-fw"></i>
+												LinkedIn</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="mailto:kuahweiliang@hotmail.com" class="link"><i
+												class="fa fa-envelope fa-fw"></i> Email</a>
+										</div>
+										<div class="link col-xs-6 col-lg-4">
+											<a href="tel:6585155931" class="link"><i
+												class="fa fa-phone fa-fw"></i> Phone</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script src="/js/pages/dashboard.js" th:src="@{/js/pages/dashboard.js}"></script>
+</body>
+</html>

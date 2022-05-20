@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Biography</div>
+		<div th:fragment="description">
+			<p>A biography, or simply bio, is a detailed description of a
+				person's life. It involves more than just the basic facts like
+				education, work, relationships, and death; it portrays a person's
+				experience of these life events.</p>
+			<p>
+				Many software developers like to set up their own personal webpages
+				to showcase their portfolios, adding interesting life events. Of
+				course, "Secure Coding" developers have webfilters than ban words
+				like
+				<code>script</code>
+				.
+			</p>
+			<br />
+			<p>Cause an alert with the message "ethan_was_here".</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<!--/* Nav Bar Form */-->
+			<form id="challenge-form" th:action="@{/challenges/biography}"
+				method="post" enctype="application/x-www-form-urlencoded"
+				data-control="biography">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+					<input id="navbar-input" type="text" class="form-control input-sm"
+						name="nav" value="https://samantha.iscool.com"><span
+						class="input-group-btn">
+						<button class="btn btn-default btn-sm" type="submit">search</button>
+					</span>
+				</div>
+			</form>
+
+			<!--/* Webpage */-->
+			<div th:fragment="main-site" class="site-content marginalize-sm">
+
+				<!--/* Content */-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fab fa-blogger"></i> Samantha's Website
+					</div>
+					<div class="panel-body">
+						<h4>Welcome to my homepage!</h4>
+						<p class="link">
+							Click here to find out more <a href="/about?img=dog.jpg"
+								class="nav-redirect text-muted">about me</a>!
+						</p>
+						<p class="link">
+							Here's some of my <a href="/achievements"
+								class="nav-redirect text-muted">achievements</a>!
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div th:fragment="achievements">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-blogger"></i> Samantha's Website
+				</div>
+				<div class="panel-body">
+					<h4>Achievements</h4>
+					<p class="link">
+						Below are some of my achievements! You can click here to go back
+						to my <a href="/" class="nav-redirect text-muted">home page</a>.
+					</p>
+					<hr />
+					<h6>
+						<i class="text-muted">Guest Chef</i>
+					</h6>
+					<p>Cooked bacon carbonara for students on exchange trip.</p>
+					<hr />
+					<h6>
+						<i class="text-muted">Web Developer Intern</i>
+					</h6>
+					<p>I worked at DSO, or something!</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="about-me">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-blogger"></i> Samantha's Website
+				</div>
+				<div class="panel-body">
+					<h4>About</h4>
+					<p class="link">
+						I am currently a year 2 student in Singapore Polytechnic! I am
+						currently studying for a Diploma in Infocomm Security Management.
+						You can click here to go back to my <a href="/"
+							class="nav-redirect text-muted">home page</a>.
+					</p>
+					<hr />
+					<h6>
+						<i class="text-muted">Background</i>
+					</h6>
+					<p>My DISM teacher says I'm cool! Here's a picture of a puppy!</p>
+					<div class="bio-img img-thumbnail marginalize-sm"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="not-found">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-blogger"></i> Samantha's Website
+				</div>
+				<div class="panel-body">
+					<h4>Not Found</h4>
+					<p>Sorry! The page you are looking for is not found!</p>
+					<p class="link">
+						Click here to go back to my <a href="/"
+							class="nav-redirect text-muted">home page</a>.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="bad-request">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-lock"></i> EasterEgg Weblock
+				</div>
+				<div class="panel-body">
+					<h4>Error</h4>
+					<p class="link">
+						You're not allowed to leave the <a href="/"
+							class="nav-redirect text-muted">domain</a> for this exercise!
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="points">20</div>
+		<div th:fragment="category">XSS</div>
+		<div th:fragment="difficulty">Easy</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script th:src="@{/js/pages/challenges/biography.js}"
+		type="text/javascript"></script>
+</body>
+</html>

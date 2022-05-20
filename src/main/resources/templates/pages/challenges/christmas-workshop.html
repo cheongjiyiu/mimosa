@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+<!--/* Custom CSS */-->
+<link th:href="@{/css/pages/challenges/christmas_workshop.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Christmas Workshop</div>
+		<div th:fragment="description">
+			<p>Your overly enthusiastic classmate showcases his new web chat
+				engine he had developed to your clique. Coincidentally, you have
+				just attended a class taught by Mr Low, and understood the
+				importance of web security. You wonder if his web service is
+				reliable... Perhaps it's time to leave him an early Christmas gift.
+				But watch out! Santa doesn't like javascript!</p>
+			<p>So this is XSSmas. And what have you done?</p>
+			<br />
+			<p>
+				Craft a link using an anchor tag &lt;a&gt; in your message and make
+				it direct users to
+				<code>https://google.com</code>
+				upon clicking.
+			</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<div class="marginalize-sm side-pad">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="far fa-comment"></i> ChatRoom
+					</div>
+					<div class="panel-body">
+
+						<!--/* Chat Room */-->
+						<div class="chat-room link">
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name jaryl">J</p>
+									<p class="txt-msg others">hello</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name jaryl">J</p>
+									<p class="txt-msg others">thanks for testing my software
+										lmao</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<p class="txt-msg me">no prob</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<p class="txt-msg me">how long did this take?</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name cherry">C</p>
+									<p class="txt-msg others">hello</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name jaryl">J</p>
+									<p class="txt-msg others">like 2h to make this layout</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name jaryl">J</p>
+									<p class="txt-msg others">who are u</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name cherry">C</p>
+									<p class="txt-msg others">cherry</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<p class="txt-msg me">hi cherry</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name david">D</p>
+									<p class="txt-msg others">hi guys</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name david">D</p>
+									<p class="txt-msg others">david here</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name jaryl">J</p>
+									<p class="txt-msg others">yo</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<p class="name jaryl">J</p>
+									<p class="txt-msg others">what u guys want for lunch</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="panel-footer">
+						<!--/* Form */-->
+						<form id="challenge-form"
+							th:action="@{/challenges/christmas-workshop}" method="post"
+							enctype="application/x-www-form-urlencoded"
+							data-control="christmas_workshop">
+							<div class="input-group">
+								<input id="xssmas-input" type="text"
+									class="form-control input-sm" name="msg"
+									placeholder="Type here..."><span
+									class="input-group-btn">
+									<button class="btn btn-default btn-sm" type="submit">Send</button>
+								</span>
+							</div>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div th:fragment="points">15</div>
+		<div th:fragment="category">XSS</div>
+		<div th:fragment="difficulty">Beginner</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script th:src="@{/js/pages/challenges/christmas_workshop.js}"
+		type="text/javascript"></script>
+</body>
+</html>

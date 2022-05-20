@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+<link href="/css/form-feedback.css" th:href="@{/css/form-feedback.css}"
+	rel="stylesheet" />
+</head>
+<body class="home">
+	<div class="container login-cont">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="reg-panel panel-green card">
+					<div class="heading">
+						<h4>Reset Password</h4>
+					</div>
+					<div class="panel-body">
+						<div class="panel-body">
+							<form action="/resetPassword" th:action="@{/resetPassword}" method="POST"
+								enctype="application/x-www-form-urlencoded"
+								data-control="reset" id="forgotpw-form">
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-envelope fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="email-input" type="text"
+												class="form-control input-sm" placeholder="Email"
+												name="email" />
+										</div>
+									</div>
+								</div>
+								<button type="submit" id="btn-submit"
+									class="btn btn-lg btn-success btn-block">Reset Password</button>
+							</form>
+							<br /> <a class="btn btn-default pull-right home-btn"
+								href="/login" th:href="@{/login}">Return to Login</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script src="/js/pages/resetpw.js" th:src="@{/js/pages/account/resetpw.js}"></script>
+</body>
+</html>

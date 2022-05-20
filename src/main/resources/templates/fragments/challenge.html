@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+
+	<!--/* Challenge Wrapper */-->
+	<div th:fragment="challenge">
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						<object th:remove="tag" th:include="this :: title">Challenge</object>
+					</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-10">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading panel-desc">
+									<i class="fa fa-book fa-fw"></i> Description
+								</div>
+								<div class="panel-body">
+									<object th:remove="tag" th:include="this :: description">Description</object>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading task-panel-heading">
+									<i class="fa fa-desktop fa-fw"></i> Task
+								</div>
+								<div class="panel-body task-panel-body">
+									<object th:remove="tag" th:include="this :: task"></object>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<i class="fa fa-terminal fa-fw"></i> Terminal
+								</div>
+								<div class="panel-body">
+									<textarea id="output" class="form-control" rows="6"
+										readonly="readonly"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<i class="fa fa-info fa-fw"></i> Information
+								</div>
+								<div class="panel-body">
+									<p>
+										<strong>Difficulty:</strong>
+										<th:block th:switch="${challenge.difficulty}">
+											<span th:case="'Beginner'"
+												class="label label-info pull-right">Beginner</span>
+											<span th:case="'Easy'" class="label label-success pull-right">Easy</span>
+											<span th:case="'Intermediate'"
+												class="label label-warning pull-right">Intermediate</span>
+											<span th:case="'Advanced'"
+												class="label label-danger pull-right">Advanced</span>
+											<span th:case="'Impossible'"
+												class="label label-special pull-right">Impossible</span>
+											<span th:case="*" th:text="${challenge.difficulty}"
+												class="label label-default pull-right">Difficulty</span>
+										</th:block>
+									</p>
+									<p>
+										<strong>Category:</strong> <span class="pull-right"> <object
+												th:remove="tag" th:include="this :: category"></object></span>
+									</p>
+									<p>
+										<strong>Max Points:</strong> <span class="pull-right">
+											<object th:remove="tag" th:include="this :: points"></object>
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<i class="fa fa-graduation-cap fa-fw"></i> Best Attempt
+								</div>
+								<div class="panel-body challenge-status">
+									<p>
+										<strong>Status:</strong>
+										<th:block th:if="${attempt}" th:switch="${attempt.status}">
+											<span th:case="'Perfect'" class="label label-info pull-right">Perfect</span>
+											<span th:case="'Completed'"
+												class="label label-success pull-right">Completed</span>
+											<span th:case="'Fail'" class="label label-danger pull-right">Fail</span>
+											<span th:case="'Error'" class="label label-danger pull-right">Error</span>
+											<span th:case="*" th:text="${attempt.status}"
+												class="label label-default pull-right">Status</span>
+										</th:block>
+										<span th:unless="${attempt}"
+											class="label label-default pull-right">Not attempted!</span>
+									</p>
+									<p>
+										<strong>Points:</strong> <span class="pull-right"
+											th:text="${attempt} ? ${attempt.points} : '-'">Points</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default challenge-hints"
+								th:with="hints=${T(securecoding.util.HintUtil).getUnlockedHints(challenge, user)},
+								next=${T(securecoding.util.HintUtil).getNextLockedHint(challenge, user)}">
+								<div class="panel-heading">
+									<i class="fa fa-question fa-fw"></i> Hints
+									<div class="pull-right"
+										th:if="${T(securecoding.util.HintUtil).getNextLockedHint(challenge, user)}">
+										<form th:action="@{__${challenge.url}__/hint}" method="post"
+											enctype="application/x-www-form-urlencoded"
+											data-control="default_hint" class="hint-form">
+											<button class="btn btn-default btn-outline btn-xs"
+												th:text="${next.cost} == 0 ? 'Free' : '-' + ${next.cost} + 'pts'">
+												Points Deducted</button>
+										</form>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div th:remove="tag" th:each="hint, stat : ${hints}">
+										<p th:text="${hint.hint}">Hint</p>
+										<hr th:unless="${stat.last}" />
+									</div>
+									<p
+										th:if="not ${#lists.isEmpty(challenge.hints)} and ${#lists.isEmpty(hints)}">No
+										hints unlocked!</p>
+									<p th:if="${#lists.isEmpty(challenge.hints)}">No hints
+										available!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "securecoding.app.name",
+    "type": "java.lang.String",
+    "description": "The name of the SecureCoding application."
+  },
+  {
+    "name": "securecoding.app.version",
+    "type": "java.lang.String",
+    "description": "The version of the application."
+  },
+  {
+    "name": "securecoding.app.url",
+    "type": "java.lang.String",
+    "description": "The external url of the application."
+  },
+  {
+    "name": "securecoding.challenges.verbose-load",
+    "type": "java.lang.Boolean",
+    "description": "Allows the application to load challenges verbosely."
+  },
+  {
+    "name": "securecoding.compiler.node.generate-packages",
+    "type": "java.lang.Boolean",
+    "description": "Allows the application to generate necessary external dependencies."
+  },
+  {
+    "name": "securecoding.mail.bot.name",
+    "type": "java.lang.String",
+    "description": "The name to be used for emails."
+  },
+  {
+    "name": "securecoding.mail.require-verify",
+    "type": "java.lang.Boolean",
+    "description": "Forces verification process upon new users."
+  },
+  {
+    "name": "securecoding.mail.prompt-login",
+    "type": "java.lang.Boolean",
+    "description": "Informs users when they perform a login."
+  }
+]}

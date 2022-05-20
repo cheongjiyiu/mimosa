@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+<link href="/css/form-feedback.css" th:href="@{/css/form-feedback.css}"
+	rel="stylesheet" />
+</head>
+<body class="home">
+	<div class="container login-cont">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="reg-panel panel-green card">
+					<div class="heading">
+						<h4>Create an Account</h4>
+					</div>
+					<div class="panel-body">
+						<div class="panel-body">
+							<form action="/register" th:action="@{/register}" method="POST"
+								enctype="application/x-www-form-urlencoded"
+								data-control="register" id="reg-form">
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-user fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="username-input" type="text"
+												class="form-control input-sm" placeholder="Username"
+												name="username" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-lock fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="password-input" type="password"
+												class="form-control input-sm" placeholder="Password"
+												name="password" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-lock fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="passwordcheck-input" type="password"
+												class="form-control input-sm" placeholder="Confirm password"
+												name="confirmPassword" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"> <i
+											class="fa fa-address-card" aria-hidden="true"></i></span>
+										<div class="input-parent">
+											<input id="adminno-input" type="text"
+												class="form-control input-sm" placeholder="Admin number"
+												name="adminNo" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-envelope fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="email-input" type="text"
+												class="form-control input-sm" placeholder="Email"
+												name="email" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-ellipsis-h fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="firstname-input" type="text"
+												class="form-control input-sm" placeholder="First Name"
+												name="firstName" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-ellipsis-h fa-fw"></i></span>
+										<div class="input-parent">
+											<input id="lastname-input" type="text"
+												class="form-control input-sm" placeholder="Last Name"
+												name="lastName" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-users fa-fw"></i></span>
+										<div class="input-parent select-parent">
+											<select class="form-control" id="class-select"
+												name="batchId">
+												<option value="">Select Class</option>
+												<option th:each="batch : ${batches}" th:if="${batch.enabled && batch.open}"
+													th:value="${batch.id}" th:text="${batch.name} + ' (' + ${batch.year} + ')'">Batch</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<button type="submit" id="btn-submit"
+									class="btn btn-lg btn-success btn-block">Register</button>
+							</form>
+							<br /> <a class="btn btn-default pull-right home-btn"
+								href="/login" th:href="@{/login}">Return to Login</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script src="/js/pages/register.js" th:src="@{/js/pages/account/register.js}"></script>
+</body>
+</html>

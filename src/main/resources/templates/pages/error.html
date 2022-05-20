@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+<link href="/css/form-feedback.css" th:href="@{/css/form-feedback.css}"
+	rel="stylesheet" />
+</head>
+<body class="home">
+	<div class="container login-cont">
+		<div class="row login-row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-panel panel-green card after-alert">
+					<div class="heading">
+						<img id="mimosa-icon" class="mimosa-icon-card"
+							src="/images/logo-150.png" th:src="@{/images/logo-150.png}" />
+						<h1 class="heading-title"
+							th:text="${@environment.getProperty('securecoding.app.name')}">SecureCoding</h1>
+						<h6 class="heading-title"
+							th:text="'v'+${@environment.getProperty('securecoding.app.version')}">v0.0.1</h6>
+					</div>
+					<div class="panel-body">
+						<h4 class="heading-msg">Oh no, programmer!</h4>
+						<p>Welp, we have just hit an error. Either the page you are
+							looking for doesn't exist, or we've messed up real bad!</p>
+						<br /> <a class="btn btn-default pull-right" th:href="@{/}">Return
+							to Safety</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Http Basics</div>
+		<div th:fragment="description">
+			<p>The Hypertext Transfer Protocol (HTTP) is designed to enable
+				communications between clients and servers.</p>
+			<p>HTTP works as a request-response protocol between a client and
+				server. A web browser may be the client, and an application on a
+				computer that hosts a web site may be the server.</p>
+			<br />
+			<p>Send us a "helloworld" greeting!</p>
+		</div>
+
+		<div th:fragment="task">
+			<form th:action="@{__${#httpServletRequest.requestURI}__}"
+				method="post" enctype="application/x-www-form-urlencoded"
+				data-control="default_challenge">
+				<div class="form-inline">
+					<input type="text" name="msg" class="form-control" /> <input
+						class="btn btn-default" type="submit" value="Submit" />
+				</div>
+			</form>
+		</div>
+
+		<div th:fragment="points">15</div>
+		<div th:fragment="category">General</div>
+		<div th:fragment="difficulty">Beginner</div>
+
+		<div th:fragment="hints">
+			<div>
+				<p class="hint">Enter "helloworld" without quotes into the textfield.</p>
+				<span class="cost">0</span>
+				<span class="priority">1</span>
+			</div>
+		</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+</body>
+</html>

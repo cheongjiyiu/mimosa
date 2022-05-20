@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* User Statistics */-->
+	<div id="page-wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Statistics</h1>
+			</div>
+		</div>
+		<div class="row statistics">
+
+			<!--/* Challenge Attempts */-->
+			<div class="col-lg-9">
+				
+				<!--/* Challenges */-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-archive fa-fw"></i> Challenges
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered data-table">
+								<thead>
+									<tr>
+										<th>Challenge</th>
+										<th>Max Points</th>
+										<th>Your Score</th>
+										<th>Status</th>
+										<th>Date Submitted</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="attempt : ${user.attempts}">
+										<td th:text="${attempt.challenge.title}">Challenge Title</td>
+										<td th:text="${attempt.challenge.points}">Max Points</td>
+										<td th:text="${attempt.points}">Score</td>
+										<td th:text="${attempt.status}">Status</td>
+										<td th:text="${attempt.dateSubmitted}">Date Submitted</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<!--/* Rankings */-->
+			<div class="col-lg-3">
+
+				<!--/* Global Ranking */-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-globe-asia fa-fw"></i> Global Position
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Name</th>
+										<th>Score</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td th:text="${position}">Number</td>
+										<td th:text="${user.firstName} + ' ' + ${user.lastName}">Name</td>
+										<td th:text="${user.points}">Points</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<!--/* Class Ranking */-->
+				<div th:if="${batchPosition}" class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-chalkboard fa-fw"></i> Class Position
+					</div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Name</th>
+										<th>Score</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td th:text="${batchPosition}">Number</td>
+										<td th:text="${user.firstName} + ' ' + ${user.lastName}">Name</td>
+										<td th:text="${user.points}">Points</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<!--/* Custom Meta CSS */-->
+	<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Casino Royale</div>
+		<div th:fragment="description">
+			<p>A JSON web token (JWT) is a URL-safe method of transferring claims
+				between two parties. It has a particular structure, and is a JSON
+				object.</p>
+			<p>
+				It's the year 2051, and these web tokens are dominating the industry.
+				As an operative under the alias <code>double07</code>, your task is
+				to restore the cookie peace and stop websites from using these foul
+				creations. We need you to read the document at
+				<code>https://task.mi6.com</code>
+				very carefully. Make sure no one else learns about the operation. We
+				have left you instructions on how to proceed.
+			</p>
+			<br />
+			<p>Complete the mission, double07. We are counting on you.</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<!--/* Nav Bar Form */-->
+			<form id="challenge-form" th:action="@{/challenges/casino-royale/view}" method="get"
+				enctype="application/x-www-form-urlencoded" data-control="casino_royale">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+					<input id="navbar-input" type="text" class="form-control input-sm" name="nav"
+						value="https://task.mi6.com"><span class="input-group-btn">
+						<button class="btn btn-default btn-sm" type="submit">search</button>
+					</span>
+				</div>
+			</form>
+
+			<!--/* Webpage */-->
+			<div class="site-content marginalize-sm">
+				
+				<!--/* Await population */-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-binoculars"></i> MI6 Landing
+					</div>
+					<div class="panel-body">
+						<p>Loading webpage...</p>
+					</div>
+				</div>
+			
+			</div>
+
+		</div>
+
+		<div th:fragment="main-landing">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-binoculars"></i> MI6 Landing
+				</div>
+				<div class="panel-body">
+					<h4>Operation: Chocolate Chip</h4>
+					<p class="text-danger">BAD USER AGENT</p>
+					<p class="link">
+						Agent "{mm-agent}" not recognised. You are not the intelligence officer
+						we are looking for. Communications will be terminated.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="main-decrypted">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-binoculars"></i> MI6 Landing
+				</div>
+				<div class="panel-body">
+					<h4>Operation: Chocolate Chip</h4>
+					<p class="text-info">GREETINGS AGENT</p>
+					<p>
+						Evening double07,
+					</p>
+					<p>
+						We have been expecting you. My name is Em, and we need
+						you to infiltrate the online casino at <a href="/"
+						class="nav-redirect casino-royale text-muted">https://royale.casino.ca</a>.
+					</p>
+					<p class="link">
+						The CEO at Royale has been funding the JWT movement, and efforts to stop
+						the deeds have failed. To be honest, I'm not quite sure what we have against
+						JSON web tokens, but I prefer cookies. Especially those Farmous Armos ones.
+						I like the little crunch they have when you bite into it. Oh and also, 
+						something about the site having some vulnerability that causes information
+						disclosure, something about some token thing. I forgot what I'm supposed to
+						tell you, but I'm sure you'd figure it out.
+					</p>
+					<p>
+						We have given you a handgun and a frequency jammer. You can pick those up at
+						<span class="text-muted">1.3098 N, 103.7775 E</span>. Goodluck.
+					</p>
+					<br />
+					<p class="text-right">
+						- Em, MI6 Director
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="not-found-mi6">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-binoculars"></i> MI6 Landing
+				</div>
+				<div class="panel-body">
+					<h4>Not Found</h4>
+					<p>Error 404: Page not found.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="casino-landing">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-credit-card"></i> Casino Royale
+				</div>
+				<div class="panel-body">
+					<h4>Casino Royale</h4>
+					<hr />
+					<p class="text-muted">Bet your money!</p>
+					<p class="link">
+						Earn lots of money when you give us money!
+						Our customers tell us this is an obvious scam, but somehow,
+						lots of consumers like yourself still fall victim! Casino
+						Royale has been established in 2006, and our concept of
+						online gambling has revolutionised the industry. Play poker
+						with 54 cards (we sneaked in the two jokers), or lose at our
+						rigged blackjack. The choices are limitless!
+					</p>
+					<p class="text-muted">Money lost guaranteed!</p>
+					<p class="link">
+						Don't believe us? Hear from our <a href="/feedback"
+						class="nav-redirect casino-royale text-muted">satisfied customers</a>!
+						Remember, when you don't play at Casino Royale, you lose. When you play,
+						you still lose. So what are you waiting for? Start losing today. 
+					</p>
+					<hr />
+					<p class="text-muted">Staff</p>
+					<p class="link">
+						Working for us? Click  <a href="/admin"
+						class="nav-redirect casino-royale text-muted">here</a>. to view admin controls!
+					</p>
+				</div>
+			</div>
+
+			<script>sessionStorage.setItem("royale-token", "{mm-jwt-token}");</script>
+
+		</div>
+
+		<div th:fragment="casino-feedback">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-credit-card"></i> Casino Royale
+				</div>
+				<div class="panel-body">
+					<h4>Customer Feedback</h4>
+					<p class="text-muted">Reviews</p>
+					<p class="link">
+						"I don't believe in anything anymore." - Edwardo Despacito
+					</p>
+					<p class="link">
+						"Wow, I lost my life savings within two hours. 10/10 would try again." - Candice Narts
+					</p>
+					<p class="link">
+						"Goodbye my love, wo de ai ren zai jian." - Taresa Tang
+					</p>
+					<p class="link">
+						"This site is horrible. They made me play blackjack with Ueno cards." - Jordan Lim
+					</p>
+					<p class="link">
+						"I actually won $2, so I'm quite pleased." - Shangrila Uthama
+					</p>
+					<p class="link">
+						"Is this where I'm supposed to register interest to help develop Mimosa?" - Surprised Pikachu
+					</p>
+					<p class="link">
+						"Worst. Casino. Ever." - Samantha Munchkins
+					</p>
+					<p class="link">
+						"What's a CVE? Can we please stop using acronyms!" - Ethan Ang
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="casino-admin">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-credit-card"></i> Casino Royale
+				</div>
+				<div class="panel-body">
+					<h4>Welcome</h4>
+					<p class="text-muted">Admin Controls</p>
+					<p class="link">
+						Welcome to the admin controls! Our web developer has created a built in self-destruct
+						button! Not quite sure why, but it seems like a cool feature.
+					</p>
+					<hr />
+					<form action="/challenges/casino-royale"
+						method="post" enctype="application/x-www-form-urlencoded"
+						data-control="default_challenge">
+						<div class="form-inline text-center">
+							<input class="btn btn-danger" type="submit" value="Self Destruct" />
+						</div>
+					</form>
+					<hr />
+					<p class="link">
+						You should only press this button if you are VERY sure about the destruction of a
+						billion dollar industry.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="casino-fail">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-credit-card"></i> Casino Royale
+				</div>
+				<div class="panel-body">
+					<h4>Bad Request</h4>
+					<p class="link">
+						Sorry, the role <span class="text-danger">{mm-role}</span>
+						does not have sufficient permissions, or is not recognised.
+						You need to be an <span class="text-muted">admin</span>.
+						Please try again later.
+					</p>
+				</div>
+			</div>
+
+		</div>
+		
+		<div th:fragment="not-found-casino">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-credit-card"></i> Casino Royale
+				</div>
+				<div class="panel-body">
+					<h4>Page not found!</h4>
+					<p class="link">
+						Sorry, we aren't able to process your request at the moment.
+						Click here to go back to our <a href="/"
+							class="nav-redirect casino-royale text-muted">home page</a>.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="bad-request">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-lock"></i> Reverse Weblock
+				</div>
+				<div class="panel-body">
+					<h4>Error</h4>
+					<p class="link">
+						Nope, you're not allowed to leave the exercise.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="points">25</div>
+		<div th:fragment="category">Session</div>
+		<div th:fragment="difficulty">Intermediate</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script th:src="@{/js/pages/challenges/casino_royale.js}" type="text/javascript"></script>
+</body>
+
+</html>

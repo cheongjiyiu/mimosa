@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Poison Apples</div>
+		<div th:fragment="description">
+			<p>Can high scores on web games truly be trusted? There's a game
+				out here on the market, and it seems wicked awesome! Sadly, you
+				don't seem to be very good at it. Perhaps a little javascript
+				sorcery would work...</p>
+			<br />
+			<p>Reach a minimum of 500 points, or somehow send a highscore
+				regardless.</p>
+		</div>
+
+		<div th:fragment="task">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="marginalize-sm">
+						<h3 class="text-center nopadding">Snake</h3>
+						<p class="text-center">
+							Current Highscore: <span id="highscore">0</span>
+						</p>
+					</div>
+					<canvas id="game-canvas" width="900" height="900" class="width-100"></canvas>
+				</div>
+			</div>
+		</div>
+
+		<div th:fragment="points">25</div>
+		<div th:fragment="category">JavaScript</div>
+		<div th:fragment="difficulty">Easy</div>
+
+		<div th:fragment="hints">
+			<div>
+				<p class="hint">Although technically possible, you might be
+					better off forging your own request.</p>
+				<span class="cost">0</span> <span class="priority">1</span>
+			</div>
+		</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<!--/* Challenge JS */-->
+	<script>
+	$(document).ready(function(){let e=$("#game-canvas")[0],t=e.getContext("2d");setInterval(function(){n+=a,py+=c,n<0&&(n=tc-1);n>tc-1&&(n=0);py<0&&(py=tc-1);py>tc-1&&(py=0);t.fillStyle="#e6e9ed",t.fillRect(0,0,e.width,e.height),t.fillStyle="#37bc9b";for(var i=0;i<f.length;i++)t.fillRect(f[i].x*l,f[i].y*l,l-2,l-2),f[i].x==n&&f[i].y==py&&(r=5);f.push({x:n,y:py});for(;f.length>r;)f.shift();o==n&&ay==py&&(r++,o=Math.floor(Math.random()*tc),ay=Math.floor(Math.random()*tc),r-5>y&&(y=r-5,$("#highscore").html(y),y>=500&&$.ajax({url:"/challenges/poison-apples",type:"post",data:JSON.stringify({highscore:y}),contentType:"application/json",beforeSend:function(e){e.setRequestHeader(_csrf_header,_csrf_token)},success:function(e,t,n){"function"==typeof window.default_challenge_success&&window.default_challenge_success(e)},error:function(e,t,n){"function"==typeof window.default_challenge_error&&window.default_challenge_error(n)}})));t.fillStyle="#da4453",t.fillRect(o*l,ay*l,l-2,l-2)},1e3/15);let n=py=15,l=tc=30,o=ay=20,a=1,c=0,f=[],r=5,y=0;$("body").keydown(function(e){37==e.keyCode&&(a=-1,c=0,e.preventDefault()),38==e.keyCode&&(a=0,c=-1,e.preventDefault()),39==e.keyCode&&(a=1,c=0,e.preventDefault()),40==e.keyCode&&(a=0,c=1,e.preventDefault())})});
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">SQLi Recompilation</div>
+		<div th:fragment="description">
+			<p>SQL Injection attacks are successful because the SQL
+				statements are not coded securely. An essential security practice
+				when it comes to data retrieval from databases is the use of
+				PreparedStatements.</p>
+			<br />
+			<p>Replace the insecure code with PreparedStatements!</p>
+		</div>
+
+		<div th:fragment="task">
+			<pre id="editor">import java.io.*;
+import java.sql.*;
+
+import javax.servlet.*;
+import javax.servlet.annotation.*;
+import javax.servlet.http.*;
+
+import securecoding.util.DatabaseUtil;
+
+@WebServlet("/EmployeeController")
+public class EmployeeController extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		String db = request.getParameter("db_name");
+		try (Connection conn = DatabaseUtil.getConnection(db)) {
+		
+			// Check for user
+			String sql = "select * from users where username = '" + username + "' and password = '" + password + "';";
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			// Return to servlet
+			if (rs.next()) {
+				request.setAttribute("firstname", rs.getString("firstname"));
+				request.setAttribute("lastname", rs.getString("lastname"));
+			}
+
+			RequestDispatcher rd = request.getRequestDispatcher("employees.jsp");
+			rd.forward(request, response);
+		} catch (SQLException e) {
+			response.sendRedirect("error.jsp");
+		}
+	}
+
+}
+</pre>
+			<form class="persistent-form"
+				th:action="@{__${#httpServletRequest.requestURI}__}" method="post"
+				enctype="application/x-www-form-urlencoded"
+				data-control="default_challenge">
+				<input type="hidden" name="code" /> <input class="btn btn-default"
+					type="submit" value="Submit" />
+			</form>
+		</div>
+
+		<div th:fragment="points">20</div>
+		<div th:fragment="category">SQLi</div>
+		<div th:fragment="difficulty">Easy</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+</body>
+</html>

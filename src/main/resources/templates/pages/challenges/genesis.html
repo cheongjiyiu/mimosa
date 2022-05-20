@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Genesis</div>
+		<div th:fragment="description">
+			<p>You've just stumbled upon the latest web game sensation,
+				Genesis. The seemingly endless game promises hours upon hours of
+				fun.</p>
+			<p>Just, hours of pure fun. Hours.</p>
+			<br />
+			<p>Reach the end.</p>
+		</div>
+
+		<div th:fragment="task">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="marginalize-sm">
+						<h3 class="text-center nopadding">Genesis</h3>
+						<p class="text-center">Beta v0.1.2e</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<canvas id="game-canvas" class="width-100"></canvas>
+				</div>
+			</div>
+		</div>
+
+		<div th:fragment="points">25</div>
+		<div th:fragment="category">JavaScript</div>
+		<div th:fragment="difficulty">Easy</div>
+
+		<!--/* Script Fragments */-->
+		<script th:fragment="script-hacker">
+			texts = [ {
+				color : '#da4453',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Hacker Detected',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#da4453',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'Did you try to hack us? That\'s a big no-no.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+			player.render.fillStyle = '#da4453';
+		</script>
+		<script th:fragment="script-level-0">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Hello!',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'Use the arrow keys or wasd to move.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-level-1">
+			texts = [
+					{
+						color : '#37bc9b',
+						weight : 700,
+						size : '120px',
+						font : 'Raleway',
+						message : 'Instructions',
+						position : {
+							x : 400,
+							y : 500
+						}
+					},
+					{
+						color : '#37bc9b',
+						weight : 300,
+						size : '36px',
+						font : 'Raleway',
+						message : 'The objective is to go to the right. Sounds simple?',
+						position : {
+							x : 405,
+							y : 550
+						}
+					} ];
+		</script>
+		<script th:fragment="script-level-2">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'No Return',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'Of course, once you cross, you can\'t turn back.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-level-3">
+			texts = [
+					{
+						color : '#37bc9b',
+						weight : 700,
+						size : '120px',
+						font : 'Raleway',
+						message : 'Obstacles',
+						position : {
+							x : 400,
+							y : 500
+						}
+					},
+					{
+						color : '#37bc9b',
+						weight : 300,
+						size : '36px',
+						font : 'Raleway',
+						message : 'Also, life isn\'t that smooth sailing. Try to move out of the way.',
+						position : {
+							x : 405,
+							y : 550
+						}
+					} ];
+
+			var box = Bodies.rectangle(1100, 960, 50, 300, {
+				render : {
+					fillStyle : '#37bc9b'
+				}
+			});
+			bodies.push(box);
+			World.add(engine.world, box);
+
+			var hinge = Bodies.rectangle(1200, 930, 15, 15, {
+				isStatic : true,
+				render : {
+					fillStyle : '#e6e9ed'
+				}
+			});
+			bodies.push(hinge);
+			World.add(engine.world, hinge);
+		</script>
+		<script th:fragment="script-level-4">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Pretty Good',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'I\'ll leave you alone for a bit now.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-level-5">
+			var stairs1 = Bodies.rectangle(1200, 950, 150, 150, {
+				isStatic : true,
+				render : {
+					fillStyle : '#e6e9ed'
+				}
+			});
+			bodies.push(stairs1);
+			World.add(engine.world, stairs1);
+			
+			var stairs2 = Bodies.rectangle(1350, 400, 150, 300, {
+				render : {
+					fillStyle : '#37bc9b'
+				}
+			});
+			bodies.push(stairs2);
+			World.add(engine.world, stairs2);
+			
+			var stairs3 = Bodies.rectangle(1500, 800, 150, 450, {
+				isStatic : true,
+				render : {
+					fillStyle : '#e6e9ed'
+				}
+			});
+			bodies.push(stairs3);
+			World.add(engine.world, stairs3);
+			
+			var stairs4 = Bodies.rectangle(1650, 725, 150, 600, {
+				isStatic : true,
+				render : {
+					fillStyle : '#e6e9ed'
+				}
+			});
+			bodies.push(stairs4);
+			World.add(engine.world, stairs4);
+		</script>
+		<script th:fragment="script-level-6">
+			prepareSVG('/external/pages/challenges/genesis/logo.svg', (vertexSets) => {
+				var logo = Bodies.fromVertices(1200, 600, vertexSets, {
+					render: {
+                        fillStyle: '#37bc9b'
+                    }
+                }, true);
+				bodies.push(logo);
+				Composite.add(engine.world, logo);
+			});
+		</script>
+		<script th:fragment="script-level-7">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Empty Hallway',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'The next three rooms have nothing.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-wall">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Bummer',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'I guess this is the end of the road.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+			
+			var wall = Bodies.rectangle(canvas.width - 50, canvas.height / 2 - 50, 50, canvas.height, {
+				isStatic : true,
+				render : {
+					fillStyle : '#e6e9ed'
+				}
+			});
+			bodies.push(wall);
+			World.add(engine.world, wall);
+		</script>
+		<script th:fragment="script-wait-what">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'How',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'You managed to cross that? Impressive!',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-recursion">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Dejavu',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'Nothing quite like a little repetition.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+			
+			/* the next level's key is "castle" */
+			
+			var box = Bodies.rectangle(1100, 960, 100, 100, {
+				render : {
+					fillStyle : '#37bc9b'
+				}
+			});
+			bodies.push(box);
+			World.add(engine.world, box);
+		</script>
+		<script th:fragment="script-castle">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Congratulations',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'You\'re reaching the end!',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-bad-ending">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'Mama Mia',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'Your secret is in another caSVGtle!',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-svg-hint">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'A Hint',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'So close yet so far. Lemme put you back to the start.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+		<script th:fragment="script-eternity">
+			texts = [ {
+				color : '#37bc9b',
+				weight : 700,
+				size : '120px',
+				font : 'Raleway',
+				message : 'The Crawl',
+				position : {
+					x : 400,
+					y : 500
+				}
+			}, {
+				color : '#37bc9b',
+				weight : 300,
+				size : '36px',
+				font : 'Raleway',
+				message : 'Congratulations! You win.',
+				position : {
+					x : 405,
+					y : 550
+				}
+			} ];
+		</script>
+
+		<div th:fragment="hints">
+			<div>
+				<p class="hint">It could be really useful to understand how
+					level generation works. If only there was a way to read the content
+					of incoming levels...</p>
+				<span class="cost">0</span> <span class="priority">1</span>
+			</div>
+		</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<!--/* Challenge JS */-->
+	<script src="https://cdn.jsdelivr.net/npm/pathseg@1.2.0/pathseg.min.js"></script>
+	<script
+		src="https://rawgit.com/schteppe/poly-decomp.js/master/build/decomp.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
+	<script th:src="@{/js/pages/challenges/genesis.js}"
+		type="text/javascript"></script>
+</body>
+</html>

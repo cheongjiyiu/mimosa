@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Faster than Light</div>
+		<div th:fragment="description">
+			<p>Developers should not leave sensitive information on their
+				webpages. The developer of this page employed a "clean-up" script to
+				remove his development comments.</p>
+			<br />
+			<p>Can you reach the password faster than light?</p>
+		</div>
+
+		<div th:fragment="task">
+			<form id="fast-form" th:action="@{/challenges/faster-than-light}" method="post"
+				enctype="application/x-www-form-urlencoded"
+				data-control="default_challenge">
+				<!-- Hello! My password is... "i_weave_light". -->
+				<div class="form-inline">
+					<input type="text" name="msg" class="form-control" /> <input
+						class="btn btn-default" type="submit" value="Submit" />
+				</div>
+			</form>
+		</div>
+
+		<div th:fragment="points">15</div>
+		<div th:fragment="category">JavaScript</div>
+		<div th:fragment="difficulty">Beginner</div>
+
+		<div th:fragment="hints">
+			<div>
+				<p class="hint">Viewing developer console is not be good enough!</p>
+				<span class="cost">0</span> <span class="priority">1</span>
+			</div>
+		</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<!--/* Challenge JS */-->
+	<script id="fast-script">
+		$(document).ready(function() {
+			$("#fast-form").html($("#fast-form").html().replace(/<!--[\s\S]*?-->/g, ""));
+			$("#fast-script").remove();
+		});
+	</script>
+</body>
+</html>

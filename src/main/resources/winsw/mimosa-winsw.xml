@@ -1,0 +1,14 @@
+<service>
+  <id>mimosa</id>
+  <name>Mimosa Service</name>
+  <description>Touch me not!</description>
+  <workingdirectory>{mms-wd}</workingdirectory>
+  
+  <executable>java</executable>
+  <arguments>-jar {mms-jar}</arguments>
+
+  <logpath>%BASE%\logs</logpath>
+  <logmode>rotate</logmode>
+
+  <onfailure action="restart" delay="5 sec"/>
+</service>

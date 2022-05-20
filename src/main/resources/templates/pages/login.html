@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+<link href="/css/form-feedback.css" th:href="@{/css/form-feedback.css}"
+	rel="stylesheet" />
+</head>
+<body class="home">
+	<div class="container login-cont">
+		<div class="row login-row">
+			<div class="col-md-4 col-md-offset-4">
+				<div th:if="${accStatus}=='not-found'" class="alert alert-danger"
+					role="alert">
+					<strong>Account not found!</strong> Invalid activation code.
+				</div>
+				<div th:if="${accStatus}=='activated'" class="alert alert-success"
+					role="alert">
+					<strong>Account successfully verified!</strong> Please login.
+				</div>
+				<div th:if="${accStatus}=='reset'" class="alert alert-success"
+					role="alert">
+					<strong>Password reset!</strong> Please login.
+				</div>
+				<div class="login-panel panel-green card after-alert">
+					<div class="heading">
+						<img id="mimosa-icon" class="mimosa-icon-card"
+							src="/images/logo-150.png" th:src="@{/images/logo-150.png}" />
+						<h1 class="heading-title"
+							th:text="${@environment.getProperty('securecoding.app.name')}">SecureCoding</h1>
+						<h6 class="heading-title"
+							th:text="'v'+${@environment.getProperty('securecoding.app.version')}">v0.0.1</h6>
+					</div>
+					<h4 class="heading-msg">Welcome, programmer!</h4>
+					<div>
+						<form role="form" th:action="@{/login}" method="post">
+							<fieldset>
+								<div class="form-group">
+									<input class="form-control" placeholder="Username"
+										name="username" type="text" autofocus="autofocus" />
+								</div>
+								<div class="form-group">
+									<input class="form-control" placeholder="Password"
+										name="password" type="password" value="" />
+								</div>
+								<div class="login-forgot-div">
+									<a th:href="@{/resetPassword}">Forgot your password?</a><br />
+								</div>
+								<button class="btn btn-lg btn-success btn-block">Login</button>
+							</fieldset>
+
+							<div class="login-register-div">
+								New to <span th:remove="tag"
+									th:text="${@environment.getProperty('securecoding.app.name')}">SecureCoding</span>?
+								<a th:href="@{/register}">Register here.</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+</body>
+</html>

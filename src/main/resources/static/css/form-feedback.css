@@ -1,0 +1,95 @@
+.login-register-div {
+	padding-top: 1em;
+}
+.login-forgot-div {
+	padding-bottom: 10px;
+}
+.login-row {
+	margin-top: 25px;
+}
+.card {
+	background-color: #f7f7f7;
+	padding: 1.5em;
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 10px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.mimosa-icon-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: inline;
+    margin-bottom: 1em;
+}
+.heading {
+	text-align: center;
+}
+.heading-title {
+	margin-bottom: 1em;
+	display:inline;	
+}
+.heading-msg {
+	margin-bottom: 1em;
+	display: block;
+}
+.home-btn {
+	margin-top: 15px;
+}
+
+.glyphicon:before {
+	margin-right: -4em;
+}
+#email-input .glyphicon:before {
+	margin-right: -23em;	
+}
+.has-feedback .form-control {
+	padding-right: 0;
+}
+.alert-div {
+	margin-top: 20%;
+}
+.after-alert {
+	margin-top: 5%;
+}
+
+.login-cont {
+	margin-top: 5%;
+}
+
+#adminno-input {
+	margin-left: -1px;
+}
+
+@media (min-width: 992px){
+	.container {
+		width: 100%;
+	}
+	.reg-cont .row  .col-md-4 , .login-cont .row  .col-md-4 {
+		width: 50%;
+	}
+	.reg-cont .row .col-md-offset-4, .login-cont .row .col-md-offset-4 {
+		margin-left: 25%;
+	}
+	.login-cont {
+		margin-top: 5%;
+	}
+	.reg-cont {
+		margin: 25px 0;
+	}
+}
+
+@media (max-width: 992px) {
+	.reg-cont .row .col-md-offset-4 {
+		margin-top: -20%;
+		margin-bottom: 10%;
+	}
+	.login-cont {
+		margin-top: 10%;
+	}
+	.reg-cont {
+		margin-top: 25%;
+	}
+}
