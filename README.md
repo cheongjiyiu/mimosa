@@ -30,7 +30,7 @@ and an `application.properties` file that you can use to configure your Mimosa s
 
 Once configuration is complete, you can start Mimosa by running the following command:java -jar mimosa-core.jar 
 
-Access the web application by accessing http://localhost
+Access the web application by typing the url http://localhost in your preferred browser.
 
 Afterwards, you can simply register an account, selecting the first class and your account will be auto approved. 
 
