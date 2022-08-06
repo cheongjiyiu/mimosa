@@ -28,7 +28,7 @@ Package(s) created!
 This will generate two packages, a `mimosa-dump.sql` database dump to run in a MySQL server of your choice,
 and an `application.properties` file that you can use to configure your Mimosa settings.
 
-Once configuration is complete, you can start Mimosa by running the following command:java -jar mimosa-core.jar 
+Once configuration is complete, you can start Mimosa by running the following command: `java -jar mimosa-core.jar`
 
 Access the web application by typing the url http://localhost in your preferred browser.
 
