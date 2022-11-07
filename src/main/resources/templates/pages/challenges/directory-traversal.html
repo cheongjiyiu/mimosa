@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<!--/* Custom Meta CSS */-->
+<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">Directory Traversal</div>
+		<div th:fragment="description">
+			<p>A directory traversal (or path traversal) attack exploits insufficient security validation or sanitization of user-supplied file names, 
+				such that characters representing "traverse to parent directory" are passed through to the operating system's file system API. 
+				An affected application can be exploited to gain unauthorized access to the file system.
+			</p>
+			<p>Directory traversal is also known as the ../ (dot dot slash) attack, directory climbing, and backtracking. Some forms of this attack are also canonicalization attacks.</p>
+			<br />
+			<p>Ride to directory of paths and save Antman.</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<!--/* Nav Bar Form */-->
+			<form id="challenge-form" th:action="@{/challenges/directory-traversal}"
+				method="post" enctype="application/x-www-form-urlencoded"
+				data-control="directory_traversal">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+					<input id="navbar-input" type="text" class="form-control input-sm"
+						name="nav" value="https://dism.edu.sg"><span
+						class="input-group-btn">
+						<button class="btn btn-default btn-sm" type="submit">search</button>
+					</span>
+				</div>
+			</form>
+
+			<!--/* Webpage */-->
+			<div th:fragment="main-site" class="site-content marginalize-sm">
+
+				<!--/* Content */-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-location-arrow" aria-hidden="true"></i> Earth-616
+					</div>
+					<div class="panel-body">
+						<h4>Hello Agent M, we have lost contact with Antman. His last known location was in the paths of directory. Please find Antman!</h4>
+						<img src="/images/nick-fury.webp" alt="nick fury" width="600" height="600">
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div th:fragment="first">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-location-arrow" aria-hidden="true"></i> Path 1 Street
+				</div>
+				
+				<div class="panel-body">
+					<h4>Just an ordinary path... Continue on!</h4>
+					<img src="/images/path1.webp" alt="path1" height="600">
+				</div>
+			</div>
+
+		</div>
+		
+		<div th:fragment="second">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-location-arrow" aria-hidden="true"></i> Quantum Tunnel
+				</div>
+				<div class="panel-body">
+					<h4>Wa-ait! Is that the portal to the Quantum Realm? Hurry traverse to the Quantum Realm!</h4>
+					<img src="/images/quantumtunnel.webp" alt="quantum tunnel" height="600">
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="third">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-location-arrow" aria-hidden="true"></i> Quantum Realm
+				</div>
+				<div class="panel-body">
+					<h4>Woah! Where are we? Quick let us find Antman!</h4>
+					<img src="/images/quantumrealm.webp" alt="quantum realm" height="600">
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="final">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-location-arrow" aria-hidden="true"></i> Antman's Location
+				</div>
+				<div class="panel-body">
+					<h4>Thanks! You found and saved Antman!</h4>
+					<img src="/images/antman.webp" alt="antman" height="600">
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="not-found">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fab fa-wordpress"></i> DISM Website
+				</div>
+				<div class="panel-body">
+					<h4>Not Found</h4>
+					<p>Sorry! The page you are looking for is not found!</p>
+					<p class="link">
+						Click here to go back to the <a href="/"
+							class="nav-redirect text-muted">home page</a>.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="bad-request">
+
+			<!--/* Content */-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-lock"></i> EasterEgg Weblock
+				</div>
+				<div class="panel-body">
+					<h4>Error</h4>
+					<p class="link">
+						You're not allowed to leave the <a href="/"
+							class="nav-redirect text-muted">domain</a> for this exercise!
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div th:fragment="points">20</div>
+		<div th:fragment="category">General</div>
+		<div th:fragment="difficulty">Easy</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+	<script th:src="@{/js/pages/challenges/directory-traversal.js}"
+		type="text/javascript"></script>
+</body>
+</html>

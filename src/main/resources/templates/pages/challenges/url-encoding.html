@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<!--/* Custom Meta CSS */-->
+	<object th:remove="tag" th:include="fragments/custom :: meta-css"></object>
+</head>
+
+<body>
+	<!--/* Include navbar */-->
+	<object th:remove="tag" th:include="fragments/custom :: navbar"></object>
+
+	<!--/* Challenge Wrapping */-->
+	<object th:remove="tag" th:include="fragments/challenge :: challenge">
+
+		<div th:fragment="title">URL Encoding</div>
+		<div th:fragment="description">
+			<p>URL encoding is a method to encode arbitrary data in a Uniform Resource Identifier using only the limited US-ASCII characters legal within a URI.</p>
+			<p>Can you find the secret message from this chunk of URL encoded code and replace it with the correct url?</p>
+		</div>
+
+		<div th:fragment="task">
+
+			<!--/* Nav Bar Form */-->
+			<form id="challenge-form" th:action="@{__${#httpServletRequest.requestURI}__}" method="post"
+				enctype="application/x-www-form-urlencoded" data-control="default_challenge">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+					<input id="navbar-input" type="text" class="form-control input-sm" name="ans"
+						value="https://dism.edu.sg?%7E%28%5F8%5E%28I%29"><span class="input-group-btn">
+						<button class="btn btn-default btn-sm" type="submit">search</button>
+					</span>
+				</div>
+			</form>
+
+
+		</div>
+
+
+		<div th:fragment="points">25</div>
+		<div th:fragment="category">Cryptography</div>
+		<div th:fragment="difficulty">Easy</div>
+
+	</object>
+
+	<!--/* Custom JS */-->
+	<object th:remove="tag" th:include="fragments/custom :: js"></object>
+
+</body>
+
+</html>
